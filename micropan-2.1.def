@@ -1,0 +1,38 @@
+Bootstrap: docker
+From: r-base:4.3.0
+
+%environment
+  export PATH=/usr/local/ncbi-blast-2.14.0+/bin:$PATH
+
+%post
+
+  # apt
+  apt update
+  apt install -y libxml2-dev
+  apt install -y libfontconfig1-dev
+  apt install -y libcurl4-openssl-dev
+  apt install -y libssl-dev libharfbuzz-dev libfribidi-dev
+  apt install -y libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
+
+  # blast+
+  cd /usr/local
+  wget -nc https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.14.0+-x64-linux.tar.gz
+  tar xf ncbi-blast-2.14.0+-x64-linux.tar.gz
+  rm -f ncbi-blast-2.14.0+-x64-linux.tar.gz
+
+  # prodigal
+  cd /tmp
+  wget -nc https://github.com/hyattpd/Prodigal/archive/refs/tags/v2.6.3.tar.gz
+  tar xf v2.6.3.tar.gz
+  cd Prodigal-2.6.3
+  make install
+  cd -
+  rm -rf v2.6.3.tar.gz
+
+  # micropan
+  R --slave -e 'install.packages("R.utils")'
+  R --slave -e 'install.packages("tidyverse")'
+  R --slave -e 'install.packages("microseq")'
+  R --slave -e 'install.packages("micropan")'
+  R --slave -e 'install.packages("foreach")'
+  R --slave -e 'install.packages("doParallel")'
