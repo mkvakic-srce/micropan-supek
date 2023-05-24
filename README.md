@@ -4,6 +4,7 @@
 
 ## Opis datoteka
 
+  1. `micropan-2.1.def` - defincijska datoteka za izgradnju kontejnera
   1. `rawdata/*.csv` - tablice s genomskim podacima
   1. `download.*` - skripte za skidanje podataka
   1. `prepare.*` - skripte za pripremanje podatak
