@@ -2,14 +2,14 @@
 
   Skripte za izvršavanje [micropan](https://github.com/larssnip/micropan) paketa R na Supeku.
 
-# Opis datoteka
+## Opis datoteka
 
   1. `rawdata/*.csv` - tablice s genomskim podacima
   1. `download.*` - skripte za skidanje podataka
   1. `prepare.*` - skripte za pripremanje podatak
   1. `blastpaa.*` - skripte za `blastpAllAll` analizu
 
-# Genetski podaci
+## Genetski podaci
 
   Sekvence po redu veličine:
 
