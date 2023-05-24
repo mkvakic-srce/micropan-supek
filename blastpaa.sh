@@ -21,5 +21,5 @@ sleep $PBS_ARRAY_INDEX
 apptainer exec \
   --pwd /host_pwd \
   --bind ${PWD}:/host_pwd \
-  micropan-2.1 \
+  micropan-2.1.sif \
     Rscript blastpaa.R
