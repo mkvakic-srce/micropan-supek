@@ -2,6 +2,7 @@ Bootstrap: docker
 From: r-base:4.3.0
 
 %environment
+
   export PATH=/usr/local/ncbi-blast-2.14.0+/bin:$PATH
 
 %post
@@ -13,6 +14,25 @@ From: r-base:4.3.0
   apt install -y libcurl4-openssl-dev
   apt install -y libssl-dev libharfbuzz-dev libfribidi-dev
   apt install -y libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
+  apt install -y git
+
+  # HMMER
+  cd /tmp
+  wget http://eddylab.org/software/hmmer/hmmer.tar.gz
+  tar zxf hmmer.tar.gz
+  cd hmmer-3.3.2
+  ./configure
+  make
+  make check
+  make install
+  cd -
+
+  # HMMER data
+  mkdir -p /apptainer_data
+  cd /apptainer_data
+  wget https://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz
+  gunzip Pfam-A.hmm.gz
+  hmmpress /apptainer_data/Pfam-A.hmm
 
   # blast+
   cd /usr/local
