@@ -12,5 +12,5 @@ blastpAllAll(faa.files,
              out.folder = "blast",
              job = strtoi(index)+1,
              start.at = 1,
-             threads = 3,
+             threads = 4,
              verbose = T)

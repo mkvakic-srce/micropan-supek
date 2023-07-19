@@ -11,10 +11,7 @@
 # cd
 cd ${PBS_O_WORKDIR:-""}
 
-# clean
-rm -f blast/
-
-# sleep
+# output dirs
 sleep $PBS_ARRAY_INDEX
 
 # run
